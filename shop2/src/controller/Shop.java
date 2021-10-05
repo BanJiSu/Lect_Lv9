@@ -41,10 +41,11 @@ public class Shop {
 				shopMenu();
 			}
 			else if(sel == 2) {
-				
+				cartManager();
 			}
 			else if(sel == 3) {
-				
+				um.logout();
+				break;
 			}
 			else if(sel == 4) {
 				
@@ -53,6 +54,10 @@ public class Shop {
 	}
 	public void shopMenu() {
 		
+	}
+	
+	public void cartManager() {
+		System.out.println();
 	}
 	
 	public void run() {

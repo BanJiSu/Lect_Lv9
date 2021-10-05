@@ -38,6 +38,12 @@ public class UserManager {
 		}
 		return false;
 	}
+	public void logout() {
+		if(log != -1) {
+			System.out.println(userList.get(log).id + "´Ô ·Î±×¾Æ¿ô ¼º°ø");
+			log = -1;
+		}
+	}
 	
 	public void secession() {
 		System.out.println("[Å»Åð] id¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
