@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Shop {
 	
 	Scanner sc = new Scanner(System.in);
+	ItemManager im = new ItemManager();
+	UserManager um = new UserManager();
 	
 	public void mainMenu() {
 		
@@ -14,7 +16,7 @@ public class Shop {
 			System.out.print("메뉴선택 : ");
 			int sel = sc.nextInt();
 			if(sel == 1) {
-				
+				um.join();
 			}
 			else if(sel == 2) {
 				
