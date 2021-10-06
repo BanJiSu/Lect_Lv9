@@ -3,7 +3,7 @@ package models;
 public class Cart {
 
 	public String userId;
-	String itemName;
+	public String itemName;
 	
 	
 	public void print() {

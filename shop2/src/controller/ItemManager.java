@@ -51,7 +51,15 @@ public class ItemManager {
 		int n = 0;
 		Cart temp = new Cart();
 		temp.userId = usID;
-		
+		for (int i = 0; i < itemList.size(); i++) {
+			if (category.get(cateNum).equals(itemList.get(i).category)) {
+				if (itemNum == n) {
+					temp.itemName = itemList.get(i).name;
+				}
+				n += 1;
+			}
+		}
+		jangList.add(temp);
 	}
 	
 	public void printJang(User u) {
