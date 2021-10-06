@@ -11,5 +11,7 @@ public class Item {
 		category = cate;
 	}
 
-	
+	public void print() {
+		System.out.println("[" + name + "]" + "[" + price + "]" + "[" + category + "]");
+	}
 }

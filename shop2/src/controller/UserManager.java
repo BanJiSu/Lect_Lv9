@@ -14,9 +14,10 @@ public class UserManager {
 	public void join() {
 		System.out.println("[가입] id 를 입력하세요.");
 		String id = sc.next();
-		User temp = new User(id, 0);
+		User temp = new User(id, 5000);
 		userList.add(temp);
 		System.out.println(temp.id + "님 가입을 축하합니다.");
+		System.out.println("가입 축하금 5000원 입금");
 	}
 	
 	public boolean login() {
@@ -45,8 +46,11 @@ public class UserManager {
 		}
 	}
 	
-	public void secession() {
-		System.out.println("[탈퇴] id를 입력하세요.");
+	User secession() {
+		User delUser = userList.get(log);
+		userList.remove(log);
+		log = -1;
+		return delUser;
 	}
 
 	

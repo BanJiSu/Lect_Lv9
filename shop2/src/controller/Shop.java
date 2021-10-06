@@ -24,7 +24,7 @@ public class Shop {
 				}
 			}
 			else if(sel == 100) {
-				
+				managerMenu();
 			}
 			else if(sel == 0) {
 				System.out.println("종료되었습니다.");
@@ -48,7 +48,9 @@ public class Shop {
 				break;
 			}
 			else if(sel == 4) {
-				
+				String delUser = um.secession().id;
+				System.out.println(delUser + " 탈퇴 완료");
+				break;
 			}
 		}
 	}
@@ -57,7 +59,27 @@ public class Shop {
 	}
 	
 	public void cartManager() {
-		System.out.println();
+		while(true) {
+			System.out.println("1.내 장바구니  2.삭제  3.구입  0.뒤로가기");
+			System.out.print("메뉴선택 : ");
+			int sel = sc.nextInt();
+			if(sel == 1) {
+				
+			}
+			else if(sel == 2) {
+				
+			}
+			else if(sel == 3) {
+				
+			}
+			else if(sel == 0) {
+				break;
+			}
+		}
+	}
+	
+	public void managerMenu() {
+		
 	}
 	
 	public void run() {
