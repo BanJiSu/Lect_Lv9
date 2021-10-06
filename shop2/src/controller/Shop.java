@@ -77,7 +77,7 @@ public class Shop {
 			System.out.print("메뉴선택 : ");
 			int sel = sc.nextInt();
 			if(sel == 1) {
-				
+				im.printJang(um.userList.get(um.log));
 			}
 			else if(sel == 2) {
 				
