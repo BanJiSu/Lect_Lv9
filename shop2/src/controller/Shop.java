@@ -55,7 +55,20 @@ public class Shop {
 		}
 	}
 	public void shopMenu() {
-		
+		while(true) {
+			im.printCategory();
+			System.out.println("카테고리 번호 입력 : (종료.-1)");
+			int cateNum = sc.nextInt();
+			if(cateNum == -1) {
+				break;
+			}
+			im.printItemList();
+			System.out.println("아이템 번호 입력 : ");
+			int itemNum = sc.nextInt();
+			
+			im.addCart(um.userList.get(um.log).id, cateNum, itemNum);
+			
+		}
 	}
 	
 	public void cartManager() {

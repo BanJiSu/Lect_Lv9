@@ -2,6 +2,11 @@ package models;
 
 public class Cart {
 
-	String userId;
+	public String userId;
 	String itemName;
+	
+	
+	public void print() {
+		System.out.println("[" + userId + "]" + "æ∆¿Ã≈€ : " + itemName);
+	}
 }
