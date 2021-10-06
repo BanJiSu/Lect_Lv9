@@ -41,10 +41,14 @@ public class ItemManager {
 			System.out.println("[" + i + "] " + category.get(i));
 		}
 	}
-	public void printItemList() {
+	public void printItemList(int cateNum) {
+		int n = 0;
 		for (int i = 0; i < itemList.size(); i++) {
-			System.out.print("[" + i + "]");
-			itemList.get(i).print();
+			if (category.get(cateNum).equals(itemList.get(i).category)) {
+				System.out.print("[" + n + "]");
+				itemList.get(i).print();
+				n += 1;
+			}
 		}
 	}
 	public void addCart(String usID, int cateNum, int itemNum) {
@@ -68,6 +72,33 @@ public class ItemManager {
 				jangList.get(i).print();
 			}
 		}
+	}
+	public void delCart(User u) {
+		printJang(u);
+		System.out.println("삭제할 아이템 선택 : ");
+		int sel = sc.nextInt();
+		jangList.remove(sel);
+		
+	}
+	public void buyCart(User u) {
+		printJang(u);
+		System.out.println("구입할 아이템 선택 : ");
+		int sel = sc.nextInt();
+		if(sel < 0 || sel >= jangList.size()) {
+			System.out.println("잘못입력하셨습니다.");
+			return;
+		}
+		int money = 0;
+		for(int i=0; i<itemList.size(); i++) {
+			if(jangList.get(sel).itemName.equals(itemList.get(i).name)) {
+				money = itemList.get(i).price;
+			}
+		}
+		if(money > u.money) {
+			System.out.println("금액부족");
+			return;
+		}
+		
 	}
 	
 	

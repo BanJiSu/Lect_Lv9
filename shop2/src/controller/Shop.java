@@ -62,7 +62,7 @@ public class Shop {
 			if(cateNum == -1) {
 				break;
 			}
-			im.printItemList();
+			im.printItemList(cateNum);
 			System.out.println("아이템 번호 입력 : ");
 			int itemNum = sc.nextInt();
 			
@@ -80,10 +80,10 @@ public class Shop {
 				im.printJang(um.userList.get(um.log));
 			}
 			else if(sel == 2) {
-				
+				im.delCart(um.userList.get(um.log));
 			}
 			else if(sel == 3) {
-				
+				im.buyCart(um.userList.get(um.log));
 			}
 			else if(sel == 0) {
 				break;

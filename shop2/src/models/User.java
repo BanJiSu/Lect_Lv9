@@ -2,7 +2,7 @@ package models;
 
 public class User {
 	public String id;
-	int money;
+	public int money;
 
 	public User(String id, int mo) {
 		this.id = id;
