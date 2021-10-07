@@ -92,6 +92,29 @@ public class Shop {
 	}
 	
 	public void managerMenu() {
+		while (true) {
+			System.out.println("1.酒捞袍包府 2.墨抛绊府包府 3.厘官备聪包府 4.蜡历包府 0.第肺啊扁 ");
+			int sel = sc.nextInt();
+			if (sel == 1) {
+				itemMenu();
+			} else if (sel == 2) {
+				categoryMenu();
+			} else if (sel == 3) {
+
+			} else if (sel == 4) {
+				userMenu();
+			} else if (sel == 0) {
+				break;
+			}
+		}
+	}
+	public void itemMenu() {
+		
+	}
+	public void categoryMenu() {
+		
+	}
+	public void userMenu() {
 		
 	}
 	
