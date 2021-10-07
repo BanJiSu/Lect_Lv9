@@ -45,7 +45,6 @@ public class ItemManager {
 		}
 		return check;
 	}
-	
 
 	public void printCategory() {
 		for(int i=0; i<category.size(); i++) {
@@ -104,6 +103,12 @@ public class ItemManager {
 		itemList.add(temp);
 	}
 	
+	public void addCategory() {
+		System.out.println("추가할 카테고리 이름을 입력하세요. ");
+		String name = sc.next();
+		category.add(name);
+	}
+	
 	public void printJang(User u) {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.id.equals(jangList.get(i).userId)) {
@@ -117,6 +122,20 @@ public class ItemManager {
 		int sel = sc.nextInt();
 		jangList.remove(sel);
 		
+	}
+	public void delCate() {
+		printCategory();
+		if(category.size() == 0) {
+			System.out.println("삭제할 카테고리가 없습니다.");
+			return;
+		}
+		System.out.print("삭제할 카테고리 선택 : ");
+		int sel = sc.nextInt();
+		if(sel < 0 || sel >= category.size()) {
+			System.out.println("잘못입력하셨습니다.");
+			return;
+		}
+		category.remove(sel);
 	}
 	public void delItem() {
 		printItemList();

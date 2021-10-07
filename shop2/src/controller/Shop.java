@@ -138,7 +138,7 @@ public class Shop {
 				im.printCategory();
 			}
 			else if(sel == 2) {
-				
+				im.addCategory();
 			}
 			else if(sel == 3) {
 				
