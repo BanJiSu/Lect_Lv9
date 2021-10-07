@@ -35,7 +35,18 @@ public class ItemManager {
 		temp = new Item("새우", 1800, category.get(1));
 		itemList.add(temp);
 	}
+	public int checkItem(String name) {
+		int check = -1;
+		for(int i=0; i<itemList.size(); i++) {
+			if(itemList.get(i).name.equals(name)) {
+				check = i;
+				break;
+			}
+		}
+		return check;
+	}
 	
+
 	public void printCategory() {
 		for(int i=0; i<category.size(); i++) {
 			System.out.println("[" + i + "] " + category.get(i));
@@ -72,6 +83,26 @@ public class ItemManager {
 		}
 		jangList.add(temp);
 	}
+	public void addItem() {
+		System.out.print("추가할 아이템 이름 입력 : ");
+		String name = sc.next();
+		int check = checkItem(name);
+		if(check != -1) {
+			System.out.println("중복 아이템입니다.");
+			return;
+		}
+		System.out.print("아이템 가격 입력 : ");
+		int money = sc.nextInt();
+		printCategory();
+		System.out.print("카테고리 선택 : ");
+		int sel = sc.nextInt();
+		if(sel < 0 || sel >= category.size()) {
+			System.out.println("잘못입력하셨습니다.");
+			return;
+		}
+		Item temp = new Item(name, money, category.get(sel));
+		itemList.add(temp);
+	}
 	
 	public void printJang(User u) {
 		for (int i = 0; i < jangList.size(); i++) {
@@ -86,6 +117,21 @@ public class ItemManager {
 		int sel = sc.nextInt();
 		jangList.remove(sel);
 		
+	}
+	public void delItem() {
+		printItemList();
+		if(itemList.size() == 0) {
+			System.out.println("삭제할 아이템이 없습니다.");
+			return;
+		}
+		System.out.print("삭제할 아이템 선택 : ");
+		int sel = sc.nextInt();
+		if(sel < 0 || sel >= itemList.size()) {
+			System.out.println("잘못입력하셨습니다.");
+			return;
+		}
+		itemList.remove(sel);
+		System.out.println("삭제완료");
 	}
 	public void buyCart(User u) {
 		printJang(u);

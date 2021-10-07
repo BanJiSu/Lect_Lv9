@@ -119,10 +119,10 @@ public class Shop {
 				im.printItemList();
 			}
 			else if(sel == 2) {
-				
+				im.addItem();
 			}
 			else if(sel == 3) {
-				
+				im.delItem();
 			}
 			else if(sel == 0) {
 				break;
