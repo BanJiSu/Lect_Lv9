@@ -59,6 +59,20 @@ public class UserManager {
 			userList.get(i).print();
 		}
 	}
+	public void delUser() {
+		printUser();
+		if(userList.size() == 0) {
+			System.out.println("삭제할 유저가 없습니다.");
+			return;
+		}
+		System.out.print("유저 선택 : ");
+		int sel = sc.nextInt();
+		if(sel < 0 || sel >= userList.size()) {
+			System.out.println("잘못입력하셨습니다.");
+			return;
+		}
+		userList.remove(sel);
+	}
 
 	
 }

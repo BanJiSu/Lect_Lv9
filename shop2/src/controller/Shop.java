@@ -93,7 +93,7 @@ public class Shop {
 	
 	public void managerMenu() {
 		while (true) {
-			System.out.println("1.아이템관리 2.카테고리관리 3.유저관리 0.뒤로가기 ");
+			System.out.println("1.아이템관리 2.카테고리관리 3.유저관리 4.장바구니관리 0.뒤로가기 ");
 			System.out.print("메뉴선택 : ");
 			int sel = sc.nextInt();
 			if (sel == 1) {
@@ -104,6 +104,9 @@ public class Shop {
 			} 
 			else if (sel == 3) {
 				userMenu();
+			}
+			else if (sel == 4) {
+				cartMenu();
 			}
 			else if (sel == 0) {
 				break;
@@ -141,7 +144,7 @@ public class Shop {
 				im.addCategory();
 			}
 			else if(sel == 3) {
-				
+				im.delCate();
 			}
 			else if(sel == 0) {
 				break;
@@ -157,12 +160,15 @@ public class Shop {
 				um.printUser();
 			}
 			else if(sel == 2) {
-				
+				um.delUser();
 			}
 			else if(sel == 0) {
 				break;
 			}
 		}
+	}
+	public void cartMenu() {
+		
 	}
 	
 	public void run() {
