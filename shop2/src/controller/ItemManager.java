@@ -41,6 +41,12 @@ public class ItemManager {
 			System.out.println("[" + i + "] " + category.get(i));
 		}
 	}
+	public void printItemList() {
+		for (int i = 0; i < itemList.size(); i++) {
+			System.out.print("[" + i + "]");
+			itemList.get(i).print();
+		}
+	}
 	public void printItemList(int cateNum) {
 		int n = 0;
 		for (int i = 0; i < itemList.size(); i++) {
@@ -51,6 +57,7 @@ public class ItemManager {
 			}
 		}
 	}
+	
 	public void addCart(String usID, int cateNum, int itemNum) {
 		int n = 0;
 		Cart temp = new Cart();

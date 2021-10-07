@@ -93,29 +93,76 @@ public class Shop {
 	
 	public void managerMenu() {
 		while (true) {
-			System.out.println("1.아이템관리 2.카테고리관리 3.장바구니관리 4.유저관리 0.뒤로가기 ");
+			System.out.println("1.아이템관리 2.카테고리관리 3.유저관리 0.뒤로가기 ");
+			System.out.print("메뉴선택 : ");
 			int sel = sc.nextInt();
 			if (sel == 1) {
 				itemMenu();
-			} else if (sel == 2) {
+			}
+			else if (sel == 2) {
 				categoryMenu();
-			} else if (sel == 3) {
-
-			} else if (sel == 4) {
+			} 
+			else if (sel == 3) {
 				userMenu();
-			} else if (sel == 0) {
+			}
+			else if (sel == 0) {
 				break;
 			}
 		}
 	}
 	public void itemMenu() {
-		
+		while(true) {
+			System.out.println("1.전체아이템  2.아이템추가  3.아이템삭제  0.뒤로가기");
+			System.out.print("메뉴선택 : ");
+			int sel = sc.nextInt();
+			if(sel == 1) {
+				im.printItemList();
+			}
+			else if(sel == 2) {
+				
+			}
+			else if(sel == 3) {
+				
+			}
+			else if(sel == 0) {
+				break;
+			}
+		}
 	}
 	public void categoryMenu() {
-		
+		while(true) {
+			System.out.println("1.전체카테고리  2.카테고리추가  3.카테고리삭제  0.뒤로가기");
+			System.out.print("메뉴선택 : ");
+			int sel = sc.nextInt();
+			if(sel == 1) {
+				im.printCategory();
+			}
+			else if(sel == 2) {
+				
+			}
+			else if(sel == 3) {
+				
+			}
+			else if(sel == 0) {
+				break;
+			}
+		}
 	}
 	public void userMenu() {
-		
+		while(true) {
+			System.out.println("1.전체유저 2.유저삭제 0.뒤로가기");
+			System.out.print("메뉴선택 : ");
+			int sel = sc.nextInt();
+			if(sel == 1) {
+				um.printUser();
+			}
+			else if(sel == 2) {
+				
+			}
+			else if(sel == 0) {
+				break;
+			}
+		}
 	}
 	
 	public void run() {

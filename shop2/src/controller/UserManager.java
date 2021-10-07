@@ -52,6 +52,13 @@ public class UserManager {
 		log = -1;
 		return delUser;
 	}
+	
+	public void printUser() {
+		for (int i = 0; i < userList.size(); i++) {
+			System.out.print("[" + i + "] ");
+			userList.get(i).print();
+		}
+	}
 
 	
 }
