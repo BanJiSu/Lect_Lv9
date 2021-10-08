@@ -73,6 +73,5 @@ public class UserManager {
 		}
 		userList.remove(sel);
 	}
-
 	
 }

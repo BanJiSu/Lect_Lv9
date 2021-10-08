@@ -174,7 +174,6 @@ public class ItemManager {
 		jangList.remove(sel);
 		System.out.println("구매 완료");
 		System.out.println("잔액 : " + u.money);
-		
 	}
 	
 	

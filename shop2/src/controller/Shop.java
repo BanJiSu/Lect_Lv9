@@ -189,7 +189,6 @@ public class Shop {
 	
 	public void run() {
 		mainMenu();
-		
 	}
 
 	
