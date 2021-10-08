@@ -170,6 +170,10 @@ public class ItemManager {
 			System.out.println("금액부족");
 			return;
 		}
+		u.money -= money;
+		jangList.remove(sel);
+		System.out.println("구매 완료");
+		System.out.println("잔액 : " + u.money);
 		
 	}
 	

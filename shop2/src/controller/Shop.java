@@ -168,7 +168,23 @@ public class Shop {
 		}
 	}
 	public void cartMenu() {
-		
+		while(true) {
+			um.printUser();
+			if(um.userList.size() == 0) {
+				System.out.println("유저가 없습니다.");
+				return;
+			}
+			System.out.println("유저 선택 : (종료.-1)");
+			int sel = sc.nextInt();
+			if(sel < 0 || sel >= um.userList.size()) {
+				System.out.println("잘못입력하셨습니다.");
+				return;
+			}
+			im.printJang(um.userList.get(sel));
+			if(sel == -1) {
+				break;
+			}
+		}
 	}
 	
 	public void run() {
