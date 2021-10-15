@@ -53,4 +53,6 @@ abstract class Unit {
 		target.sethp(target.gethp()-dam);
 		System.out.println(target.name+"   의의 남은 체력 : "+target.hp);
 	}
+	
+	
 }

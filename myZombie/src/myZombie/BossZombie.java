@@ -7,7 +7,7 @@ public class BossZombie extends Unit implements Boss{
 		super(name, hp, att, def, pos);
 		this.shield = shield;
 	}
-	
+		
 	public int getshield() {
 		return shield;
 	}

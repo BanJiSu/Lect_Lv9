@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class Game {
-	Random rn = new Random();
+	Random rn = new Random();	
 	Scanner sc = new Scanner(System.in);
 	
 	private Game() {}
