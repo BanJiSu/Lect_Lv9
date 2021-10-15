@@ -45,4 +45,20 @@ abstract class Unit {
 		this.def = def;
 		this.pos = pos;
 	}
+	public void attack(Unit target) {
+		int dam = (this.att - target.def)*(rn.nextInt(150)+50)/100;
+		if(dam<=0) {dam = 1;}
+		System.out.println(name+"의 공격!");
+		System.out.println(dam+"의 대미지!");
+		target.sethp(target.gethp()-dam);
+		System.out.println(target.name+"   의의 남은 체력 : "+target.hp);
+	}
+	
+	public void print() {
+		System.out.println("이름 : " + name + "	체력 : " + hp);
+		System.out.println("공격력 : " + att + "	방어력 : " + def + "	위치 : " + pos);
+	}
+	
+	
+	
 }
