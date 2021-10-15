@@ -53,6 +53,9 @@ abstract class Unit {
 		target.sethp(target.gethp()-dam);
 		System.out.println(target.name+"   의의 남은 체력 : "+target.hp);
 	}
-	
+	public void print() {
+		System.out.println("이름 : " + name + "	체 : " + hp);
+		System.out.println("공 : " + att + "	방 : " + def + "	층수 : " + pos);
+	}
 	
 }

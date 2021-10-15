@@ -1,5 +1,5 @@
 package myZombie;
 
-public interface Boss {
+public interface Pp {
 	
 }
