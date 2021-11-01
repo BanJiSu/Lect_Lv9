@@ -178,8 +178,8 @@ class PushPanel extends MyUtil{
 		this.r1 = new Rect(x,y,SIZE,SIZE);
 		
 		while(true) {
-			x = rn.nextInt(700-100)+100;
-			y = rn.nextInt(700-100)+100;
+			x = rn.nextInt(700-100-200)+100;
+			y = rn.nextInt(700-100-200)+100;
 			
 			// ?
 			if((x >= this.r1.getX() && x < this.r1.getX() + SIZE && y >= this.r1.getY() && y < this.r1.getY() + SIZE)) continue;
