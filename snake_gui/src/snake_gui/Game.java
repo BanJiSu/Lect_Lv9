@@ -1,12 +1,15 @@
 package snake_gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 class SnakePanel extends MyUtil{
 	
@@ -30,6 +33,16 @@ class SnakePanel extends MyUtil{
 		setSnake();
 		setbtn();
 		setResetbtn();
+		setHeader();
+	}
+
+	private void setHeader() {
+		JLabel head = new JLabel("SNAKE GAME");
+		head.setBounds(100, 0, 800, 80);
+		head.setFont(new Font("",Font.BOLD,40));
+		head.setVerticalAlignment(JLabel.BOTTOM);
+		
+		add(head);
 	}
 
 	private void setResetbtn() {
@@ -73,6 +86,7 @@ class SnakePanel extends MyUtil{
 		for(int i=0; i<this.snake.length; i++) {
 			this.snake[i] = new Rect(x,y,SIZE,SIZE);
 			x += SIZE;
+			
 		}
 		
 		
@@ -129,32 +143,68 @@ class SnakePanel extends MyUtil{
 		yy = this.snake[0].getY();
 		
 		// аб
-		if(this.dir == 1 && this.snake[0].getX() - SIZE > 0) {
+		if(this.dir == 1 && this.snake[0].getX() - SIZE > SIZE) {
 			xx -= this.SIZE;
 		}
 		// ©Л
-		else if(this.dir == 3 && this.snake[0].getX() + this.SIZE < 700) {
+		else if(this.dir == 3 && this.snake[0].getX() + this.SIZE < 600) {
 			xx += SIZE;
 		}
 		// ╩С
-		else if(this.dir == 4 && this.snake[0].getY() - SIZE > 0) {
+		else if(this.dir == 4 && this.snake[0].getY() - SIZE > SIZE) {
 			yy -= SIZE;
 		}
 		// го
-		else if(this.dir == 2 && this.snake[0].getY() + this.SIZE < 700) {
+		else if(this.dir == 2 && this.snake[0].getY() + this.SIZE < 600) {
 			yy += SIZE;
 		}
 		
 		///// test
-		if(this.dir == 2) {
-			this.snake[0].setY(yy);
-			for(int i=1; i<4; i++) {
-				this.snake[i].setY(this.snake[i-1].getY());
+		// аб
+//		if(this.dir == 1) {
+//			this.snake[0].setX(xx);
+//		}
+//		// ©Л
+//		else if(this.dir == 3) {
+//			this.snake[0].setX(xx);
+//			for(int i=0; i<4; i++) {
+//				int temp = this.snake[i].getX();
+//				this.snake[i].setX(temp+SIZE);
+//			}
+//		}
+//		// ╩С
+//		else if(this.dir == 4) {
+//			this.snake[0].setY(yy);
+//		}
+//		// го
+//		else if(this.dir == 2) {
+//			this.snake[0].setY(yy);
+//			for(int i=1; i<4; i++) {
+//				if(this.snake[i-1].getY()-SIZE > SIZE) {
+//					this.snake[i].setY(this.snake[i-1].getY()-SIZE);	
+//					this.snake[i].setX(this.snake[i-1].getX());
+//				}
+//			}
+//		}
+		
+		// test2
+		if(this.dir != 0) {
+			for(int i=this.snake.length-1; i > 0; i--) {
 				this.snake[i].setX(this.snake[i-1].getX());
+				this.snake[i].setY(this.snake[i-1].getY());
 			}
-		}
-		else if(this.dir == 3) {
 			this.snake[0].setX(xx);
+			this.snake[0].setY(yy);
+				
+//			this.snake[3].setX(this.snake[2].getX());
+//			this.snake[2].setX(this.snake[1].getX());
+//			this.snake[1].setX(this.snake[0].getX());
+//			this.snake[0].setX(xx);
+//			
+//			this.snake[3].setY(this.snake[2].getY());
+//			this.snake[2].setY(this.snake[1].getY());
+//			this.snake[1].setY(this.snake[0].getY());
+//			this.snake[0].setY(yy);
 		}
 		
 		
@@ -163,6 +213,11 @@ class SnakePanel extends MyUtil{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		try {
+			Thread.sleep(150);
+		} catch (Exception e2) {
+			
+		}
 		if(e.getSource() == this.btn[0]) {
 			this.dir = 1;
 		}
@@ -187,7 +242,27 @@ class SnakePanel extends MyUtil{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.reset) {
 			setSnake();
+			this.dir = 0;
 		}
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// аб
+		if (e.getKeyCode() == e.VK_LEFT)
+			this.dir = 1;
+		// ©Л
+		if (e.getKeyCode() == e.VK_RIGHT)
+			this.dir = 3;
+		// ╩С
+		if (e.getKeyCode() == e.VK_UP)
+			this.dir = 4;
+		// го
+		if (e.getKeyCode() == e.VK_DOWN)
+			this.dir = 2;
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		this.dir = 0;
 	}
 }
 
