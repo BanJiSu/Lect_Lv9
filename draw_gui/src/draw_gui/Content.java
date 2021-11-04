@@ -50,7 +50,9 @@ public class Content extends MyUtil{
 
 		gapXX = e.getX();
 		gapYY = e.getY();
+		
 		check = false;
+		
 		
 	}
 	
@@ -69,18 +71,21 @@ public class Content extends MyUtil{
 		}
 		
 		check = true;
+		
+		// 왜 깜박일까?
+		
 	}
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		
 		// 역방향일때 
-		if(e.getX() < gapX) {
+		if(e.getX() < this.gapX) {
 			this.gapW = this.gapXX - e.getX();
 			this.gapX = e.getX();
 			renemo1 = true;
 			
 		}
-		else if(e.getY() < gapY) {
+		else if(e.getY() < this.gapY) {
 			this.gapH = this.gapYY - e.getY();
 			this.gapY = e.getY();
 			renemo2 = true;
@@ -95,8 +100,7 @@ public class Content extends MyUtil{
 			renemo1 = false;
 			renemo2 = false;
 		}
-		
-		
+
 		
 	}
 	@Override
@@ -115,6 +119,7 @@ public class Content extends MyUtil{
 			else {
 				this.gapW = this.gapH;
 			}
+			
 		}
 		
 	}
@@ -137,6 +142,8 @@ public class Content extends MyUtil{
 		}
 		
 		g.drawRect(gapX, gapY, gapW, gapH);
+//		g.fillRect(gapX, gapY, gapW, gapH);
+		
 		
 		requestFocusInWindow();	// keyListener 에 대한 포커스 다시 요청
 		repaint();
