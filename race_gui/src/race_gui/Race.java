@@ -1,9 +1,11 @@
 package race_gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.util.Random;
 
@@ -12,17 +14,21 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class RacePanel extends MyUtil{
+class RacePanel extends MyUtil implements Runnable{
 
-//	private ImageIcon icon = new ImageIcon("image/horse1.png");
 	
 	public Horses[] horse = new Horses[5];
 	
 	private JButton resetbtn = new JButton();
 	private JButton startbtn = new JButton();
 
-	Random rn = new Random();
+	private Random rn = new Random();
 	private int nn = 1;
+	
+	private int ms;
+	private boolean isRun;
+	private JLabel timer = new JLabel("ready");
+	
 	
 	public RacePanel() {
 		setLayout(null);
@@ -31,6 +37,30 @@ class RacePanel extends MyUtil{
 		
 		setHorse();
 		setbtn();
+		
+		setTimer();
+	
+	}
+	private void setTimer() {
+		timer.setBounds(30,500,100,50);
+		add(timer);
+		
+	}
+
+	@Override
+	public void run() {
+		while(true) {
+			if(isRun) {
+				this.ms++;
+				this.timer.setText(String.format("%3d.%3d", this.ms/1000,this.ms%1000));
+			}
+			try {
+				Thread.sleep(1);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+
 	}
 
 	private void setbtn() {
@@ -73,13 +103,27 @@ class RacePanel extends MyUtil{
 				horse[i].setX(50);
 				horse[i].setRank(0);
 			}
+			isRun = false;
+			timer.setText("ready");
+			this.ms = 0;
+			this.nn = 1;
 		}
 		else if(e.getSource() == this.startbtn) {
 			System.out.println("start");
 			for(int i=0; i<5; i++) {
 				horse[i].setState(horse[i].RUN);
 			}
+			isRun = true;
 		}
+		
+//		// 선생님풀이
+//		if(e.getSource() instanceof JButton) {
+//			JButton target = (JButton) e.getSource();
+//			if(target == this.resetbtn) {
+//				this.isRun = this.isRun ? false :true;
+//				this.resetbtn.setText(this.isRun ? "reset" : "start");
+//			}
+//		}
 	}
 
 	@Override
@@ -96,6 +140,9 @@ class RacePanel extends MyUtil{
 			if(horse[i].getRank() != 0) {
 				g.setFont(new Font("",Font.BOLD,40));
 				g.drawString(horse[i].getRank()+"", 750+20, 50 + horse[i].getY());
+				g.setFont(new Font("",Font.PLAIN,20));
+				g.drawString(" 등"+horse[i].getRecord()+"",750+40, 50 + horse[i].getY());
+				
 			}
 		}
 		
@@ -122,30 +169,38 @@ class RacePanel extends MyUtil{
 				horse[i].setRank(nn);
 				horse[i].setX(700);
 				horse[i].setState(horse[i].GOAL);
+				horse[i].setRecord(String.format("%4d.%3d", this.ms/1000,this.ms%1000));
 				nn++;
 			}
 			
+			
 		}
 		
-//		for(int i=0; i<5; i++) {
-//			if(horse[1].getState() == horse[i].GOAL) {
-//				System.out.println(horse[i].getNum()+ "번 : " + horse[i].getRank());
-//			}
-//		}
 		
 	}
 }
 
 public class Race extends JFrame{
+	
+	public static Dimension dm = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int W = dm.width;
+	public static final int H = dm.height;
+	
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = 700;
+	
+	private RacePanel rp = new RacePanel();
+	
 	public Race() {
 		super("Race");
 		setLayout(null);
 		setBounds(100,100,900,600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		add(new RacePanel());
+		add(rp);
 		
 		setVisible(true);
 		revalidate();
+		rp.run();
 	}
 }

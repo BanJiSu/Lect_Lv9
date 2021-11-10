@@ -16,7 +16,18 @@ public class Horses {
 	private ImageIcon image;
 	
 	private int rank;
+	private String record;
 	
+	
+	
+	public String getRecord() {
+		return record;
+	}
+
+	public void setRecord(String record) {
+		this.record = record;
+	}
+
 	public int getNum() {
 		return num;
 	}
