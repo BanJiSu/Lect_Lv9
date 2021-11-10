@@ -1,6 +1,7 @@
 package race_gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -70,6 +71,7 @@ class RacePanel extends MyUtil{
 			for(int i=0; i<5; i++) {
 				horse[i].setState(2);
 				horse[i].setX(50);
+				horse[i].setRank(0);
 			}
 		}
 		else if(e.getSource() == this.startbtn) {
@@ -92,7 +94,8 @@ class RacePanel extends MyUtil{
 		
 		for(int i=0; i<5; i++) {
 			if(horse[i].getRank() != 0) {
-				g.drawString(horse[i].getRank()+"", 750+5, 50 + horse[i].getY());
+				g.setFont(new Font("",Font.BOLD,40));
+				g.drawString(horse[i].getRank()+"", 750+20, 50 + horse[i].getY());
 			}
 		}
 		
